@@ -1,34 +1,38 @@
 <template>
   <div id="app">
-    <form @submit.prevent="createTweet">
+    <h4 class="mb-5">Hey visitor, feel free to tweet!</h4>
+    <form @submit.prevent="createTweet" class="mb-4">
       <div class="form-group row">
-        <input
-          type="text"
-          class="form-control col-3 mx-2"
-          placeholder="Name"
-          v-model="tweet.name"
-        >
-        <input
-          type="text"
-          class="form-control col-3 mx-2"
-          placeholder="Message"
-          v-model="tweet.message"
-        >
-        <button class="btn btn-success">Tweet</button>
+        <div class="col">
+          <input
+            type="text"
+            class="form-control col-3 mx-2"
+            placeholder="Name"
+            v-model="tweet.name"
+          />
+        </div>
+        <div class="col">
+          <input
+            type="text"
+            class="form-control col-3 mx-2"
+            placeholder="Message"
+            v-model="tweet.message"
+          />
+        </div>
+        <div class="col">
+          <button class="btn btn-success">Submit Tweet</button>
+        </div>
       </div>
     </form>
 
-    <table class="table">
+    <table class="table table-striped table-bordered">
       <thead>
         <th>Time</th>
         <th>Message</th>
         <th>Name</th>
       </thead>
       <tbody>
-        <tr
-          v-for="tweet in tweets"
-          :key="tweet.id"
-        >
+        <tr v-for="tweet in tweets" :key="tweet.id">
           <td>{{ tweet.datetime }}</td>
           <td>{{ tweet.message }}</td>
           <td>{{ tweet.name }}</td>
@@ -80,6 +84,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin: 60px 60px 0 60px;
 }
 </style>
