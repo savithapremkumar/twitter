@@ -33,7 +33,9 @@
       </thead>
       <tbody>
         <tr v-for="tweet in tweets" :key="tweet.id">
-          <td>{{ tweet.datetime }}</td>
+          <td>
+            {{ moment(tweet.datetime, true).format("MMMM Do YYYY, h:mm:ss a") }}
+          </td>
           <td>{{ tweet.message }}</td>
           <td>{{ tweet.name }}</td>
         </tr>
@@ -43,6 +45,7 @@
 </template>
 
 <script>
+import moment from "moment";
 export default {
   name: "App",
   data() {
@@ -73,6 +76,7 @@ export default {
       });
       await this.getTweets();
     },
+    moment,
   },
 };
 </script>
